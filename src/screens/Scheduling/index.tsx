@@ -3,6 +3,7 @@ import { useTheme } from "styled-components";
 import { StatusBar } from "react-native";
 
 import { BackButton } from "../../components/BackButton";
+import { Calendar } from "../../components/Calendar";
 
 import ArrowSvg from "../../assets/arrow.svg";
 import { Button } from "../../components/Button";
@@ -39,24 +40,20 @@ export function Scheduling() {
         <RentalPeriod>
           <DateInfo>
             <DateTitle>DE</DateTitle>
-            <DateValue selected={true}>
-              18/06/2021
-            </DateValue>
+            <DateValue selected={true}>18/06/2021</DateValue>
           </DateInfo>
 
           <ArrowSvg />
 
           <DateInfo>
             <DateTitle>ATÉ</DateTitle>
-            <DateValue selected={true}>
-              20/06/2021
-            </DateValue>
+            <DateValue selected={true}>20/06/2021</DateValue>
           </DateInfo>
         </RentalPeriod>
       </Header>
 
       <Content>
-
+        <Calendar />
       </Content>
 
       <Footer>
