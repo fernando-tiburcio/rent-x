@@ -41,9 +41,16 @@ import {
   RentalPriceQuota,
   RentalPriceTotal,
 } from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
 export function SchedulingDetails() {
   const theme = useTheme();
+  const { navigate, goBack } = useNavigation();
+
+  function handleRentalComplete() {
+    navigate('SchedulingComplete');
+  }
+
   return (
     <Container>
       <StatusBar
@@ -52,7 +59,7 @@ export function SchedulingDetails() {
         translucent
       />
       <Header>
-        <BackButton onPress={() => {}} />
+        <BackButton onPress={() => goBack()} />
       </Header>
 
       <CarImages>
@@ -121,7 +128,7 @@ export function SchedulingDetails() {
       </Content>
 
       <Footer>
-        <Button title="Alugar Agora" color={theme.colors.success} />
+        <Button title="Alugar Agora" color={theme.colors.success} onPress={handleRentalComplete} />
       </Footer>
     </Container>
   );

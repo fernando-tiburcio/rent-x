@@ -1,17 +1,18 @@
 import React from "react";
 import { StatusBar } from "react-native";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
 
 import { BackButton } from "../../components/BackButton";
 import { ImageSlider } from "../../components/ImageSlider";
 import { Acessory } from "../../components/Acessory";
 import { Button } from "../../components/Button";
 
-import SpeedSvg from '../../assets/speed.svg';
-import AccelerationSvg from '../../assets/acceleration.svg';
-import ForceSvg from '../../assets/force.svg';
-import GasolineSvg from '../../assets/gasoline.svg';
-import ExchangeSvg from '../../assets/exchange.svg';
-import PeopleSvg from '../../assets/people.svg';
+import SpeedSvg from "../../assets/speed.svg";
+import AccelerationSvg from "../../assets/acceleration.svg";
+import ForceSvg from "../../assets/force.svg";
+import GasolineSvg from "../../assets/gasoline.svg";
+import ExchangeSvg from "../../assets/exchange.svg";
+import PeopleSvg from "../../assets/people.svg";
 
 import {
   Container,
@@ -31,6 +32,11 @@ import {
 } from "./styles";
 
 export function CarDetails() {
+  const { navigate, goBack } = useNavigation();
+
+  function handleConfirmRental() {
+    navigate('Scheduling');
+  }
   return (
     <Container>
       <StatusBar
@@ -39,7 +45,7 @@ export function CarDetails() {
         translucent
       />
       <Header>
-        <BackButton onPress={() => {}} />
+        <BackButton onPress={() => goBack()} />
       </Header>
 
       <CarImages>
@@ -80,7 +86,7 @@ export function CarDetails() {
       </Content>
 
       <Footer>
-        <Button title="Confirmar" />
+        <Button title="Escolher período do aluguel" onPress={handleConfirmRental} />
       </Footer>
     </Container>
   );
