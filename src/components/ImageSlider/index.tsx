@@ -19,6 +19,7 @@ export function ImageSlider({imagesUrl}: ImageSliderProps){
         <ImageIndex active={true} />
         <ImageIndex active={false} />
         <ImageIndex active={false} />
+        <ImageIndex active={false} />
       </ImageIndexes>
 
       <CarImageWrapper>

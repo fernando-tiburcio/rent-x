@@ -41,14 +41,24 @@ import {
   RentalPriceQuota,
   RentalPriceTotal,
 } from "./styles";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { CarDTO } from "../../dtos/CarDTO";
+import { MarkedDatesProps } from "../../components/Calendar";
+import { getAccessoryIcon } from "../../utils/getAccessoryIcon";
+
+interface Params {
+  car: CarDTO;
+  dates: MarkedDatesProps;
+}
 
 export function SchedulingDetails() {
   const theme = useTheme();
-  const { navigate, goBack } = useNavigation();
+  const { navigate, goBack } = useNavigation<any>();
+  const route = useRoute();
+  const { car, dates } = route.params as Params;
 
   function handleRentalComplete() {
-    navigate('SchedulingComplete');
+    navigate("SchedulingComplete");
   }
 
   return (
@@ -63,33 +73,30 @@ export function SchedulingDetails() {
       </Header>
 
       <CarImages>
-        <ImageSlider
-          imagesUrl={[
-            "https://w7.pngwing.com/pngs/1014/228/png-transparent-2018-porsche-panamera-car-luxury-vehicle-porsche-911-porsche-compact-car-car-performance-car.png",
-          ]}
-        />
+        <ImageSlider imagesUrl={car.photos} />
       </CarImages>
 
       <Content>
         <Details>
           <Description>
-            <Brand>Lamborghini</Brand>
-            <Name>Huracan</Name>
+            <Brand>{car.brand}</Brand>
+            <Name>{car.name}</Name>
           </Description>
 
           <Rent>
-            <Period>Ao dia</Period>
-            <Price>R$ 580</Price>
+            <Period>{car.rent.period}</Period>
+            <Price>R$ {car.rent.price}</Price>
           </Rent>
         </Details>
 
         <Acessories>
-          <Acessory name="380km/h" icon={SpeedSvg} />
-          <Acessory name="3.2s" icon={AccelerationSvg} />
-          <Acessory name="800 HP" icon={ForceSvg} />
-          <Acessory name="Gasolina" icon={GasolineSvg} />
-          <Acessory name="Auto" icon={ExchangeSvg} />
-          <Acessory name="2 pessoas" icon={PeopleSvg} />
+          {car.accessories.map((accessory) => (
+            <Acessory
+              name={accessory.name}
+              icon={getAccessoryIcon(accessory.type)}
+              key={accessory.type}
+            />
+          ))}
         </Acessories>
 
         <RentalPeriod>
@@ -128,7 +135,11 @@ export function SchedulingDetails() {
       </Content>
 
       <Footer>
-        <Button title="Alugar Agora" color={theme.colors.success} onPress={handleRentalComplete} />
+        <Button
+          title="Alugar Agora"
+          color={theme.colors.success}
+          onPress={handleRentalComplete}
+        />
       </Footer>
     </Container>
   );
