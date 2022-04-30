@@ -5,7 +5,7 @@ export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.header};
 
-  padding-top: 96px;
+  padding-top: 80px;
 `;
 
 export const Content = styled.View`
@@ -13,7 +13,7 @@ export const Content = styled.View`
   justify-content: center;
   align-items: center;
 
-  padding-bottom: 80px;
+  padding-bottom: 60px;
 `;
 
 export const Title = styled.Text`
@@ -21,7 +21,7 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.shape};
   font-family: ${({ theme }) => theme.fonts.secondary_600};
 
-  margin-top: 40px;
+  margin-top: 30px;
 `;
 
 export const Message = styled.Text`

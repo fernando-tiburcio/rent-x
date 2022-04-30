@@ -17,7 +17,7 @@ import { useNavigation } from "@react-navigation/native";
 
 export function SchedulingComplete() {
   const { width } = useWindowDimensions();
-  const { navigate } = useNavigation();
+  const { navigate } = useNavigation<any>();
   function handleRentalFinish() {
     navigate('Home');
   }
