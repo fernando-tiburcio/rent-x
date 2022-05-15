@@ -29,10 +29,10 @@ export function SchedulingComplete() {
         backgroundColor="transparent"
         translucent
       />
-      <LogoSvg width={width} />
+      <LogoSvg width={width} testID="scheduling-complete-logo-svg" />
 
       <Content>
-        <DoneSvg width={80} height={80} />
+        <DoneSvg width={80} height={80} testID="scheduling-complete-done-svg" />
         <Title>Carro alugado!</Title>
         <Message>
           Agora você só precisa ir {'\n'}
@@ -42,7 +42,7 @@ export function SchedulingComplete() {
       </Content>
 
       <Footer>
-        <ConfirmButton title="OK" onPress={handleRentalFinish} />
+        <ConfirmButton title="OK" onPress={handleRentalFinish} testID="scheduling-complete-confirm-button" />
       </Footer>
     </Container>
   );
